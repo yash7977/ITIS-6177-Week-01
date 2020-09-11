@@ -1,11 +1,11 @@
-var http = require("http");
+var express = require("express");
+var app = express();
+var port = 8080;
 
-var server = http.createServer(function (req, res) {
-  if (req.url == "/") {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write("<html><body><p>Hello World</p></body></html>");
-    res.end();
-  }
+app.get("/", (req, res) => {
+  res.send("Hello World");
 });
 
-server.listen(8080);
+app.listen(port, () => {
+  console.log(`http://localhost:${port}`);
+});
